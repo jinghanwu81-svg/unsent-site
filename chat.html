@@ -14,10 +14,10 @@
         <p style="margin:6px 0 0;color:#94a3b8;font-size:14px;">Before you text him, text here.</p>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
-        <button style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ex</button>
-        <button style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ideal Boyfriend</button>
-        <button style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Clear-minded Friend</button>
-      </div>
+       <button onclick="setMode('ex')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ex</button>
+       <button onclick="setMode('ideal')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ideal Boyfriend</button>
+       <button onclick="setMode('friend')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Clear-minded Friend</button>
+</div>
     </div>
 
     <div style="padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;gap:10px;flex-wrap:wrap;">
@@ -54,53 +54,93 @@
     </div>
   </div>
 
-  <script>
-    function setQuickText(text) {
-      document.getElementById("messageInput").value = text;
-    }
+ <script>
+  let currentMode = "ex";
 
-    function sendMessage() {
-      const input = document.getElementById("messageInput");
-      const chatBox = document.getElementById("chatBox");
-      const message = input.value.trim();
+  function setMode(mode) {
+    currentMode = mode;
+  }
 
-      if (message === "") return;
+  function setQuickText(text) {
+    document.getElementById("messageInput").value = text;
+  }
 
-      const userMessage = document.createElement("div");
-      userMessage.style.alignSelf = "flex-end";
-      userMessage.style.maxWidth = "70%";
-      userMessage.style.padding = "14px 18px";
-      userMessage.style.borderRadius = "18px 18px 6px 18px";
-      userMessage.style.background = "#ffffff";
-      userMessage.style.color = "#111827";
-      userMessage.style.lineHeight = "1.6";
-      userMessage.textContent = message;
-      chatBox.appendChild(userMessage);
+  function getReply(message) {
+    const lower = message.toLowerCase();
 
-      const reply = document.createElement("div");
-      reply.style.alignSelf = "flex-start";
-      reply.style.maxWidth = "70%";
-      reply.style.padding = "14px 18px";
-      reply.style.borderRadius = "18px 18px 18px 6px";
-      reply.style.background = "rgba(255,255,255,0.08)";
-      reply.style.color = "#e5e7eb";
-      reply.style.lineHeight = "1.6";
-      reply.textContent = "I’m here. You can keep talking.";
-      
-      setTimeout(() => {
-        chatBox.appendChild(reply);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 400);
-
-      input.value = "";
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    document.getElementById("messageInput").addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        sendMessage();
+    if (currentMode === "ex") {
+      if (lower.includes("miss") || message.includes("想你")) {
+        return "I know. I’m still here in the way you remember me.";
       }
-    });
-  </script>
-</body>
-</html>
+      if (lower.includes("text") || message.includes("联系")) {
+        return "You can say it here first. You don’t have to send it yet.";
+      }
+      return "I know this still hurts, don’t rush yourself.";
+    }
+
+    if (currentMode === "ideal") {
+      if (lower.includes("miss") || message.includes("想你")) {
+        return "Come here. You don’t need to hold this alone.";
+      }
+      if (lower.includes("sleep") || message.includes("睡")) {
+        return "It’s okay. Stay here a little longer, and breathe slowly.";
+      }
+      return "I’m here with you. Say it slowly.";
+    }
+
+    if (currentMode === "friend") {
+      if (lower.includes("text") || message.includes("联系")) {
+        return "You probably want relief, not really him. Don’t send it yet.";
+      }
+      if (lower.includes("profile") || message.includes("主页")) {
+        return "Checking again will only reopen it. Close it for tonight.";
+      }
+      return "I know it’s hard, but this feeling will pass.";
+    }
+
+    return "I’m here. You can keep talking.";
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("messageInput");
+    const chatBox = document.getElementById("chatBox");
+    const message = input.value.trim();
+
+    if (message === "") return;
+
+    const userMessage = document.createElement("div");
+    userMessage.style.alignSelf = "flex-end";
+    userMessage.style.maxWidth = "70%";
+    userMessage.style.padding = "14px 18px";
+    userMessage.style.borderRadius = "18px 18px 6px 18px";
+    userMessage.style.background = "#ffffff";
+    userMessage.style.color = "#111827";
+    userMessage.style.lineHeight = "1.6";
+    userMessage.textContent = message;
+    chatBox.appendChild(userMessage);
+
+    const reply = document.createElement("div");
+    reply.style.alignSelf = "flex-start";
+    reply.style.maxWidth = "70%";
+    reply.style.padding = "14px 18px";
+    reply.style.borderRadius = "18px 18px 18px 6px";
+    reply.style.background = "rgba(255,255,255,0.08)";
+    reply.style.color = "#e5e7eb";
+    reply.style.lineHeight = "1.6";
+    reply.textContent = getReply(message);
+
+    setTimeout(() => {
+      chatBox.appendChild(reply);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }, 400);
+
+    input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  document.getElementById("messageInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      sendMessage();
+    }
+  });
+</script>
