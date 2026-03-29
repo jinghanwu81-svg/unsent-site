@@ -13,10 +13,13 @@
         <h1 style="margin:0;font-size:24px;">Unsent</h1>
         <p style="margin:6px 0 0;color:#94a3b8;font-size:14px;">Before you text him, text here.</p>
       </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;">
-       <button onclick="setMode('ex')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ex</button>
-       <button onclick="setMode('ideal')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ideal Boyfriend</button>
-       <button onclick="setMode('friend')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Clear-minded Friend</button>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;">
+  <div id="modeLabel" style="font-size:14px;color:#94a3b8;">Current mode: Ex</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <button id="btnEx" onclick="setMode('ex')" style="padding:10px 14px;border:none;border-radius:999px;background:white;color:#111827;cursor:pointer;">Ex</button>
+    <button id="btnIdeal" onclick="setMode('ideal')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Ideal Boyfriend</button>
+    <button id="btnFriend" onclick="setMode('friend')" style="padding:10px 14px;border:none;border-radius:999px;background:#1e293b;color:white;cursor:pointer;">Clear-minded Friend</button>
+  </div>
 </div>
     </div>
 
