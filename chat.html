@@ -61,8 +61,38 @@
   let currentMode = "ex";
 
   function setMode(mode) {
-    currentMode = mode;
+  currentMode = mode;
+
+  const modeLabel = document.getElementById("modeLabel");
+  const btnEx = document.getElementById("btnEx");
+  const btnIdeal = document.getElementById("btnIdeal");
+  const btnFriend = document.getElementById("btnFriend");
+
+  btnEx.style.background = "#1e293b";
+  btnEx.style.color = "white";
+  btnIdeal.style.background = "#1e293b";
+  btnIdeal.style.color = "white";
+  btnFriend.style.background = "#1e293b";
+  btnFriend.style.color = "white";
+
+  if (mode === "ex") {
+    modeLabel.textContent = "Current mode: Ex";
+    btnEx.style.background = "white";
+    btnEx.style.color = "#111827";
   }
+
+  if (mode === "ideal") {
+    modeLabel.textContent = "Current mode: Ideal Boyfriend";
+    btnIdeal.style.background = "white";
+    btnIdeal.style.color = "#111827";
+  }
+
+  if (mode === "friend") {
+    modeLabel.textContent = "Current mode: Clear-minded Friend";
+    btnFriend.style.background = "white";
+    btnFriend.style.color = "#111827";
+  }
+}
 
   function setQuickText(text) {
     document.getElementById("messageInput").value = text;
