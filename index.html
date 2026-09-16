@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Unsent</title>
-</head>
-<body style="margin:0;background:linear-gradient(to bottom,#0b1020,#111827);color:white;font-family:Arial,Helvetica,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;">
-  <div style="text-align:center;max-width:700px;padding:24px;">
-    <h1 style="font-size:48px;margin-bottom:16px;">Unsent</h1>
-    <p style="font-size:20px;line-height:1.6;color:#cbd5e1;">
-      Before you text him, text here.
-    </p>
-    <p style="font-size:16px;line-height:1.8;color:#94a3b8;margin-top:20px;">
-      A private emotional support space for the moments when you miss him,
-      want to reach out, or just need someone to respond.
-    </p>
-    <button onclick="window.location.href='chat.html'" style="margin-top:28px;padding:14px 26px;border:none;border-radius:999px;background:#ffffff;color:#111827;font-size:16px;cursor:pointer;">
-  Start talking
-  </button>
-  </div>
-</body>
-</html>
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f8f6ef"><title>未寄出 · 给心事一个落脚处</title><link rel="stylesheet" href="mobile.css?v=3"></head>
+<body><main class="phone"><header class="brand"><a href="#talk" aria-label="未寄出，回到说说">未寄出<span>unsent</span></a></header>
+<section id="mail" class="page" aria-labelledby="mail-title" hidden><div class="title-row"><h1 id="mail-title">有些话，<br>不必送达<span class="ink-star">✳</span></h1><div class="stamp">只属于你<br><b>私人信箱</b></div></div><div class="mail-art" aria-hidden="true"><div class="paper-slip">亲爱的自己：<br>不用今天就想明白。</div><div class="envelope peach"><span class="face">·ᴗ·</span></div></div><button class="primary wide" id="new-letter">＋ 写一封新信</button><div class="section-label"><h2>我的信件</h2><span id="letter-count">0 封</span></div><div class="filters" aria-label="筛选信件"><button class="active" data-filter="all" aria-pressed="true">全部</button><button data-filter="saved" aria-pressed="false">未寄出</button><button data-filter="draft" aria-pressed="false">草稿</button></div><div id="letter-list"></div></section>
+<section id="talk" class="page" aria-labelledby="talk-title"><div class="title-row"><h1 id="talk-title">今天的心事，<br>先放我这里。</h1><span class="flower" aria-hidden="true">✳</span></div><div class="companion-scene" aria-hidden="true"><span class="scene-note">你可以慢慢说</span><div class="envelope green"><span class="face">·ᴗ·</span><span class="leg left"></span><span class="leg right"></span></div><span class="scene-spark">✧</span><span class="scene-line"></span></div><div class="mode-title">此刻，你希望怎么被陪伴？</div><div class="modes" role="group" aria-label="陪伴方式"><button class="active" data-mode="listen" aria-pressed="true">听我说说</button><button data-mode="comfort" aria-pressed="false">安慰一下</button><button data-mode="clarify" aria-pressed="false">一起想清楚</button></div><div id="messages" aria-live="polite" aria-relevant="additions"><div class="message assistant">不用想好开头。<br>从你现在最想说的那句话开始吧。</div></div><div class="chat-tools"><button id="save-chat">把这些话收进信箱 ↗</button><button id="reset-chat">新对话</button></div><form id="chat-form" class="composer"><label class="sr-only" for="message">写下你想说的话</label><textarea id="message" rows="2" placeholder="写下那句，还没发出去的话…" maxlength="8000" required></textarea><button class="send" type="submit" aria-label="发送消息">↑</button></form><p class="footnote demo-note">互动演示 · 当前为示例回应，尚未接入 AI</p></section>
+<section id="calendar" class="page" aria-label="小灯日历" hidden><div class="title-row"><h1>给自己留盏灯，<br>也留一点时间。</h1><span class="bulb-doodle" aria-hidden="true"><i class="bulb-glass"></i><i class="bulb-filament"></i><i class="bulb-base"></i></span></div><div id="calendar-mount"></div></section>
+<nav class="bottom-nav" aria-label="主导航"><a href="#mail" data-page="mail"><span aria-hidden="true" class="nav-envelope"></span><span>信箱</span></a><a href="#talk" data-page="talk" class="active" aria-current="page"><span aria-hidden="true" class="nav-chat"></span><span>说说</span></a><a href="#calendar" data-page="calendar"><span aria-hidden="true" class="nav-light"></span><span>小灯</span></a></nav></main>
+<dialog id="letter-dialog"><form id="letter-form"><div class="dialog-heading"><h2>写一封未寄出的信</h2><button type="button" id="close-letter" aria-label="关闭并保存草稿">×</button></div><label for="letter-title">信的名字</label><input id="letter-title" maxlength="80" placeholder="给今晚的自己"><label for="letter-body">想留下的话</label><textarea id="letter-body" rows="9" maxlength="20000" placeholder="亲爱的…"></textarea><p class="footnote">关闭时会保留为草稿。保存的信件也可以继续编辑。</p><button class="primary wide" type="submit">收进信箱</button></form></dialog><div id="toast" class="toast" role="status"></div><script src="lights.js?v=2"></script><script src="mobile.js"></script></body></html>
