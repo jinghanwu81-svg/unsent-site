@@ -82,18 +82,37 @@ python -m http.server 8001 --bind 127.0.0.1
 ## 文件结构
 
 ```text
-README.md       项目入口与文档导航
-AGENTS.md       模型协作说明
-brief/brief.md  产品简报
-prd/prd.md      产品需求文档
-spec/spec.md    技术实现说明
-index.html   首页入口，默认显示「说说」
-chat.html    三页 Demo 入口
-mobile.css   手机端布局、配色与插画样式
-mobile.js    页面切换、演示聊天与信箱逻辑
-lights.js    小灯日历、次数分档与本地存储逻辑
-lights.css   早期独立日历样式，当前入口不再引用
+unsent/
+├── README.md          项目入口与文档导航
+├── AGENTS.md          模型协作说明
+├── brief/
+│   └── brief.md       为什么做：产品定位与假设
+├── prd/
+│   └── prd.md         做什么：功能规则与验收条件
+├── spec/
+│   └── spec.md        如何实现：模块、数据与状态
+├── index.html         首页入口，默认显示「说说」
+├── chat.html          三页 Demo 入口
+├── mobile.css         当前布局与视觉样式
+├── mobile.js          页面切换、示例聊天与信箱逻辑
+├── lights.js          小灯日历、次数与本地存储逻辑
+└── lights.css         早期独立日历样式，当前入口未引用
 ```
+
+## 分支与协作
+
+`main` 保存上述完整项目，文档与代码共同维护。文件夹按内容分类，分支围绕一项改动建立；不把 Brief、PRD 或代码分别放到不同分支。
+
+新任务从最新 `main` 创建分支，名称不使用 `codex` 前缀：
+
+| 分支命名 | 用途 | 示例 |
+| --- | --- | --- |
+| `docs/主题` | 文档和验收记录 | `docs/verification-records` |
+| `fix/问题` | 修复已有行为 | `fix/letter-save` |
+| `feature/功能` | 新增确定的功能 | `feature/calendar-edit` |
+| `experiment/探索` | 尚待验证的方案 | `experiment/ai-chat` |
+
+在任务分支完成改动和相关检查，通过 Pull Request 合入 `main`，然后同步本地主分支。已合并分支可作为历史记录保留；下一项工作从最新 `main` 开始，不复用旧任务分支。
 
 ## 数据与当前范围
 
